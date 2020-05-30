@@ -23,8 +23,8 @@ export class ContactsTableComponent implements AfterViewInit, OnInit {
    * Nice-to-have: show/hide the inner-workings columns dynamically to aid in future debugging
    */
   displayedColumns = [
-    // '_id',
-    // 'index',
+    '_id',
+    'index',
     'firstName',
     'lastName',
     'company',
