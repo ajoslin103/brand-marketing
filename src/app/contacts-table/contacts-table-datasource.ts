@@ -4,34 +4,50 @@ import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 
-// TODO: Replace this with your own data model type
+// TODO: move to the project types file
+export type ContactUID = string;
+export type ContactIndex = number;
+export type ContactFirstName = string;
+export type ContactLastName = string;
+export type ContactCompany = string;
+export type ContactEMail = string;
+export type ContactPhone = string;
+export type ContactAddress = string;
+
+// TODO: alias from the project types file
 export interface ContactsTableItem {
-  name: string;
-  id: number;
+  _id: ContactUID;
+  index: ContactIndex;
+  firstName: ContactFirstName;
+  lastName: ContactLastName;
+  company: ContactCompany;
+  email: ContactEMail;
+  phone: ContactPhone;
+  address: ContactAddress;
 }
 
-// TODO: replace this with real data from your application
+// TODO: pull from the project sample data file
 const EXAMPLE_DATA: ContactsTableItem[] = [
-  {id: 1, name: 'Hydrogen'},
-  {id: 2, name: 'Helium'},
-  {id: 3, name: 'Lithium'},
-  {id: 4, name: 'Beryllium'},
-  {id: 5, name: 'Boron'},
-  {id: 6, name: 'Carbon'},
-  {id: 7, name: 'Nitrogen'},
-  {id: 8, name: 'Oxygen'},
-  {id: 9, name: 'Fluorine'},
-  {id: 10, name: 'Neon'},
-  {id: 11, name: 'Sodium'},
-  {id: 12, name: 'Magnesium'},
-  {id: 13, name: 'Aluminum'},
-  {id: 14, name: 'Silicon'},
-  {id: 15, name: 'Phosphorus'},
-  {id: 16, name: 'Sulfur'},
-  {id: 17, name: 'Chlorine'},
-  {id: 18, name: 'Argon'},
-  {id: 19, name: 'Potassium'},
-  {id: 20, name: 'Calcium'},
+  {
+    _id: '5de91c005b98615393e74931',
+    index: 0,
+    firstName: 'Browning',
+    lastName: 'Graham',
+    company: 'MELBACOR',
+    email: 'browninggraham@melbacor.com',
+    phone: '+1 (906) 585-2525',
+    address: '920 Hastings Street, Roosevelt, Puerto Rico, 5573',
+  },
+  {
+    _id: '5de91c00d6b4d04e96ef44da',
+    index: 1,
+    firstName: 'Mcmahon',
+    lastName: 'Fulton',
+    company: 'ILLUMITY',
+    email: 'mcmahonfulton@illumity.com',
+    phone: '+1 (814) 489-3373',
+    address: '676 Bainbridge Street, Abrams, Mississippi, 2652',
+  },
 ];
 
 /**
@@ -59,12 +75,14 @@ export class ContactsTableDataSource extends DataSource<ContactsTableItem> {
     const dataMutations = [
       observableOf(this.data),
       this.paginator.page,
-      this.sort.sortChange
+      this.sort.sortChange,
     ];
 
-    return merge(...dataMutations).pipe(map(() => {
-      return this.getPagedData(this.getSortedData([...this.data]));
-    }));
+    return merge(...dataMutations).pipe(
+      map(() => {
+        return this.getPagedData(this.getSortedData([...this.data]));
+      })
+    );
   }
 
   /**
@@ -91,12 +109,28 @@ export class ContactsTableDataSource extends DataSource<ContactsTableItem> {
       return data;
     }
 
+    // NOTE: replaced original strategy (see below)
+    // return data.sort((a, b) => {
+    //   switch (this.sort.active) {
+    //     case 'id':
+    //       return compare(+a.id, +b.id, isAsc);
+    //     case 'name':
+    //       return compare(a.name, b.name, isAsc);
+    //     default:
+    //       return 0;
+    //   }
+    // });
+
+    // NOTE: use a dynamic approach to ease future changes
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
-      switch (this.sort.active) {
-        case 'name': return compare(a.name, b.name, isAsc);
-        case 'id': return compare(+a.id, +b.id, isAsc);
-        default: return 0;
+      switch (true) {
+        case 'string' === typeof a[this.sort.active]:
+          return compare(a[this.sort.active], b[this.sort.active], isAsc);
+        case 'number' === typeof a[this.sort.active]:
+          return compare(a[+this.sort.active], b[+this.sort.active], isAsc);
+        default:
+          return 0;
       }
     });
   }
