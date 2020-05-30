@@ -10,6 +10,7 @@
 
 - declare all columns, hide internals -- aid to future debuggers
 - discussion: it would be nice to combine dataSource && displayedColumns in some way... creating an iterable to simplify the declarative table definition style, but one can't walk a type at runtime...
+- discussion: the sample data indicates to me that the postal-code might be managed as a number rather than a string... additional work may be needed elsewhere should we need to support international contacts...
 
 # The Assignment
 
