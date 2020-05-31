@@ -4,14 +4,13 @@ import { Observable } from 'rxjs';
 
 import { ContactRecord } from '../models/contact';
 
-import { tap } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ContactService {
-  // private serviceUrl = 'http://demo5838836.mockable.io/contact';
-  private serviceUrl = 'http://localhost:3000/contacts';
+  private serviceUrl = environment.contactListUrl;
 
   constructor(private http: HttpClient) {}
 
