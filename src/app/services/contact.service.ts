@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class ContactService {
-  private serviceUrl = environment.contactListUrl;
+  serviceUrl = environment.contactListUrl;
 
   constructor(private http: HttpClient) {}
 

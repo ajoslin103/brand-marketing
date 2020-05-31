@@ -17,15 +17,17 @@ describe('ContactService', () => {
     expect(service).toBeTruthy();
   });
 
-  // it('should have a private field: serviceUrl', () => {
-  //   expect(service.serviceUrl).toBeFalsy();
-  // });
+  it('should have a [was private] field: serviceUrl', () => {
+    expect(service.serviceUrl).toBeFalsy();
+  });
 
   it('should have a method: getServiceUrl', () => {
     expect(typeof service.getServiceUrl === 'function').toBeTrue();
+    service.getServiceUrl();
   });
 
   it('should have a function: getContactRecordObservable', () => {
     expect(typeof service.getContactRecordObservable === 'function').toBeTrue();
+    service.getContactRecordObservable();
   });
 });

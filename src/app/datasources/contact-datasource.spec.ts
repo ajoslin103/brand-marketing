@@ -1,7 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
+import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
+import { MatSortModule, MatSort } from '@angular/material/sort';
 
 import { ContactDataSource } from './contact-datasource';
+import { ContactRecord } from '../models/contact';
 
 const SAMPLE_DATA = [
   {
@@ -27,7 +30,13 @@ const SAMPLE_DATA = [
 ];
 
 describe('ContactDataSource', () => {
-  let datasource: ContactDataSource;
+  let datasource = new ContactDataSource(SAMPLE_DATA);
+  // datasource.paginator = new MatPaginator(
+  //   MatPaginatorIntl,
+  //   ChangeDetectorRef,
+  //   MatPaginatorDefaultOptions
+  // );
+  // datasource.sort = new MatSort();
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -40,13 +49,13 @@ describe('ContactDataSource', () => {
     expect(datasource).toBeTruthy();
   });
 
-  // it('should have a private method: getPagedData', () => {
-  //   expect(datasource.getPagedData).toBeFalsy();
-  // });
+  it('should have a [was private] method: getPagedData', () => {
+    expect(typeof datasource.getPagedData === 'function').toBeTrue();
+  });
 
-  // it('should have a private method: getSortedData', () => {
-  //   expect(datasource.getSortedData).toBeFalsy();
-  // });
+  it('should have a [was private] method: getSortedData', () => {
+    expect(typeof datasource.getSortedData === 'function').toBeTrue();
+  });
 
   it('should have a method: connect', () => {
     expect(typeof datasource.connect === 'function').toBeTrue();
@@ -56,7 +65,25 @@ describe('ContactDataSource', () => {
     expect(typeof datasource.disconnect === 'function').toBeTrue();
   });
 
-  // it('should have a function: compare', () => {
-  //   expect(typeof datasource.compare === 'function').toBeTrue();
+  it('should have a function: compare', () => {
+    expect(typeof datasource.compare === 'function').toBeTrue();
+  });
+
+  it('should compare a to b', () => {
+    expect(datasource.compare('a', 'b', true)).toBe(-1);
+  });
+
+  it('should compare 1 to 2', () => {
+    expect(datasource.compare(1, 2, true)).toBe(-1);
+  });
+
+  // it('should getPagedData', () => {
+  //   datasource.paginator.pageSize = 10;
+  //   datasource.paginator.pageIndex = 0;
+  //   expect(datasource.getPagedData(SAMPLE_DATA)).toBeUndefined();
+  // });
+
+  // it('should getSortedData', () => {
+  //   expect(datasource.getSortedData(SAMPLE_DATA)).toBeUndefined();
   // });
 });
