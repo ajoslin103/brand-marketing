@@ -52,7 +52,7 @@ describe('ContactDataSource', () => {
     expect(typeof datasource.connect === 'function').toBeTrue();
   });
 
-  it('should have a function: disconnect', () => {
+  it('should have a method: disconnect', () => {
     expect(typeof datasource.disconnect === 'function').toBeTrue();
   });
 

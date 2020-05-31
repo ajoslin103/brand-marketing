@@ -93,10 +93,49 @@ describe('AddContactFormComponent', () => {
     expect(compiled.querySelector('[formcontrolname="address"]')).toBeTruthy();
   });
 
+  it('form should be invalid when empty', () => {
+    expect(component.addContactForm.valid).toBeFalsy();
+    component.onSubmit();
+  });
+
+  it('form firstName should be invalid when empty', () => {
+    expect(component.addContactForm.controls.firstName.valid).toBeFalsy();
+  });
+
+  it('form firstName should be valid when not empty', () => {
+    component.addContactForm.controls.firstName.setValue('John');
+    expect(component.addContactForm.controls.firstName.valid).toBeTruthy();
+  });
+
+  it('form email should be invalid when bad address', () => {
+    component.addContactForm.controls.email.setValue('john');
+    expect(component.addContactForm.controls.email.valid).toBeFalsy();
+  });
+
+  it('form email should be valid when good address', () => {
+    component.addContactForm.controls.email.setValue('john@jim.com');
+    expect(component.addContactForm.controls.email.valid).toBeTruthy();
+  });
+
+  it('form should be valid when full', () => {
+    component.addContactForm.controls.firstName.setValue('firstName');
+    component.addContactForm.controls.lastName.setValue('lastName');
+    component.addContactForm.controls.company.setValue('company');
+    component.addContactForm.controls.email.setValue('john@jim.com');
+    component.addContactForm.controls.phone.setValue('phone');
+    component.addContactForm.controls.address.setValue('address');
+    expect(component.addContactForm.valid).toBeTruthy();
+    component.onSubmit();
+  });
+
   it('should have a submit button', () => {
     fixture = TestBed.createComponent(AddContactFormComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
     expect(compiled.querySelector('[type="submit"]')).toBeTruthy();
+  });
+
+  it('should have a method: onSubmit', () => {
+    expect(typeof component.onSubmit === 'function').toBeTrue();
   });
 });
