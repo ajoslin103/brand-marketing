@@ -39,4 +39,64 @@ describe('AddContactFormComponent', () => {
   it('should compile', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should be titled: Add New Contact', () => {
+    fixture = TestBed.createComponent(AddContactFormComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    expect(
+      compiled.querySelector('.mat-card-header-text').textContent
+    ).toContain('Add New Contact');
+  });
+
+  it('should have a control for firstName', () => {
+    fixture = TestBed.createComponent(AddContactFormComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    expect(
+      compiled.querySelector('[formcontrolname="firstName"]')
+    ).toBeTruthy();
+  });
+
+  it('should have a control for lastName', () => {
+    fixture = TestBed.createComponent(AddContactFormComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('[formcontrolname="lastName"]')).toBeTruthy();
+  });
+
+  it('should have a control for company', () => {
+    fixture = TestBed.createComponent(AddContactFormComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('[formcontrolname="company"]')).toBeTruthy();
+  });
+
+  it('should have a control for email', () => {
+    fixture = TestBed.createComponent(AddContactFormComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('[formcontrolname="email"]')).toBeTruthy();
+  });
+
+  it('should have a control for phone', () => {
+    fixture = TestBed.createComponent(AddContactFormComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('[formcontrolname="phone"]')).toBeTruthy();
+  });
+
+  it('should have a control for address', () => {
+    fixture = TestBed.createComponent(AddContactFormComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('[formcontrolname="address"]')).toBeTruthy();
+  });
+
+  it('should have a submit button', () => {
+    fixture = TestBed.createComponent(AddContactFormComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('[type="submit"]')).toBeTruthy();
+  });
 });

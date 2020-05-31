@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  contactListUrl: 'http://localhost:3000/contacts',
+  contactListUrl: 'http://localhost:3001/contacts',
 };
 
 /*

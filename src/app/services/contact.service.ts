@@ -17,6 +17,12 @@ export class ContactService {
   getServiceUrl = () => this.serviceUrl;
 
   getContactRecordObservable(): Observable<ContactRecord[]> {
-    return this.http.get<ContactRecord[]>(this.serviceUrl);
+    try {
+      return this.http.get<ContactRecord[]>(this.serviceUrl);
+    } catch (err) {
+      const msg = `accessing ${this.serviceUrl} threw:${err.message}`;
+      console.error(msg);
+      throw new Error(msg);
+    }
   }
 }
