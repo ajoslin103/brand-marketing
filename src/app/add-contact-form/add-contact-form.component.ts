@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-contact-form',
@@ -16,9 +17,16 @@ export class AddContactFormComponent {
     address: [null, Validators.required],
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, public snackBar: MatSnackBar) {}
 
   onSubmit() {
-    console.log(`Contact Added: ${JSON.stringify(this.addContactForm.value)}`);
+    if (/invalid/i.test(this.addContactForm.status)) {
+      this.snackBar.open('Please correct your form entries');
+    } else {
+      this.snackBar.open('Contact Submitted');
+      console.log(
+        `Contact Submitted: ${JSON.stringify(this.addContactForm.value)}`
+      );
+    }
   }
 }

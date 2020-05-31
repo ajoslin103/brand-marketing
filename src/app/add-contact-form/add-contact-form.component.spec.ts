@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AddContactFormComponent } from './add-contact-form.component';
 
@@ -15,8 +16,9 @@ describe('AddContactFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddContactFormComponent ],
+      declarations: [AddContactFormComponent],
       imports: [
+        MatSnackBarModule,
         NoopAnimationsModule,
         ReactiveFormsModule,
         MatButtonModule,
@@ -24,7 +26,7 @@ describe('AddContactFormComponent', () => {
         MatInputModule,
         MatRadioModule,
         MatSelectModule,
-      ]
+      ],
     }).compileComponents();
   }));
 
