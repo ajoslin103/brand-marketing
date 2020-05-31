@@ -1,3 +1,7 @@
+# Deployment
+
+I normally deliver software via signed .rpms - in this case I will deliver to /var/www/html
+
 # Reviewable
 
 `src/app/datasources/contact-datasource.ts`
