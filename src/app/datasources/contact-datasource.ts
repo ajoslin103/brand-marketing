@@ -1,19 +1,10 @@
-import { Injectable } from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 
-/**
- * the method of creating a service to hook a datasource to a materials table comes from here:
- *
- * ref: https://medium.com/codingthesmartway-com-blog/angular-material-part-4-data-table-23874582f23a
- * kudos: @s_eschweiler
- */
-
 import { ContactRecord } from '../models/contact';
-import { ContactService } from '../services/contact.service';
 
 /**
  * Data source for the ContactsTable view. This class should
@@ -21,15 +12,11 @@ import { ContactService } from '../services/contact.service';
  * (including sorting, pagination, and filtering).
  */
 
-@Injectable({
-  providedIn: 'root',
-})
 export class ContactDataSource extends DataSource<ContactRecord> {
-  data: ContactRecord[] = [];
   paginator: MatPaginator;
   sort: MatSort;
 
-  constructor(public contactService: ContactService) {
+  constructor(public data: ContactRecord[]) {
     super();
   }
 
@@ -39,14 +26,14 @@ export class ContactDataSource extends DataSource<ContactRecord> {
    * @returns A stream of the items to be rendered.
    */
   connect(): Observable<ContactRecord[]> {
-    return this.contactService.getContactsTableItem();
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     const dataMutations = [
-      observableOf(this.contactService),
+      observableOf(this.data),
       this.paginator.page,
       this.sort.sortChange,
     ];
+
     return merge(...dataMutations).pipe(
       map(() => {
         return this.getPagedData(this.getSortedData([...this.data]));

@@ -8,7 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ContactsTableComponent } from './contacts-table/contacts-table.component';
-import { ContactDataSource } from './datasources/contact-datasource';
 import { ContactService } from './services/contact.service';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -41,7 +40,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatCardModule,
     ReactiveFormsModule,
   ],
-  providers: [ContactService, ContactDataSource],
+  providers: [ContactService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
