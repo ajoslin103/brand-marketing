@@ -17,10 +17,10 @@ export class AddContactFormComponent {
     address: [null, Validators.required],
   });
 
-  constructor(private fb: FormBuilder, public snackBar: MatSnackBar) {}
+  constructor(private fb: FormBuilder, private snackBar: MatSnackBar) {}
 
   onSubmit() {
-    if (/invalid/i.test(this.addContactForm.status)) {
+    if (!this.addContactForm.valid) {
       this.snackBar.open('Please correct your form entries');
     } else {
       this.snackBar.open('Contact Submitted');
