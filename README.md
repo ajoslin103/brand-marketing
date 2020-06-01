@@ -2,16 +2,23 @@
 
 `src/app/datasources/contact-datasource.ts`
 
-- switch to dynamic sorting
+- switch to my dynamic sorting to help reduce the future change ripples
 
 `src/app/services/contact-service.spec.ts`
 
-- discussion: how does one test private fields and methods
-
-`src/app/contacts-table/contacts-table.component.html/.ts`
-
-- discussion: it would be nice to combine dataSource && displayedColumns in some way... creating an iterable to simplify the declarative table definition style, but one can't walk a type at runtime...
 - discussion: the sample data indicates to me that the postal-code might be managed as a number rather than a string... additional work may be needed elsewhere should we need to support international contacts...
+- discussion: it would be nice to combine dataSource && displayedColumns in some way... creating an iterable to simplify the declarative table definition style, but one can't walk a type at runtime...
+- discussion: testing issues
+
+  - ContactService, TLDR: If I have time I'll revisit...
+  - ContactDataSource, TLDR: If I have time I'll revisit...
+  - ContactsTableComponent, TLDR: If I have time I'll revisit...
+
+- discussion: code coverage lacking
+
+  - provide an array, and I don't get the sorting and pagination
+  - provide a source of contactRecords, it wouldn't stop pulling them
+  - providing a dataSouce with a service, it tries to connect too soon
 
 # The Assignment
 
