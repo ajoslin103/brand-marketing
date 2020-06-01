@@ -2,14 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
 import { ContactsTableComponent } from './contacts-table/contacts-table.component';
-import { ContactService } from './services/contact.service';
-import { ContactDataSource } from './datasources/contact-datasource';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -21,6 +16,15 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
+
+import { environment } from '../environments/environment';
+
+import { AppComponent } from './app.component';
+import { UIStrings } from './utils/ui-strings';
+import { ContactService } from './services/contact.service';
+import { ContactDataSource } from './datasources/contact-datasource';
+
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [AppComponent, ContactsTableComponent, AddContactFormComponent],
@@ -42,7 +46,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatCardModule,
     ReactiveFormsModule,
   ],
-  providers: [ContactService, MatSnackBar, ContactDataSource],
+  providers: [ContactService, MatSnackBar, ContactDataSource, UIStrings],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
