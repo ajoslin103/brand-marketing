@@ -17,3 +17,13 @@ export interface ContactRecord {
   phone: ContactPhone;
   address: ContactAddress;
 }
+export interface ContactHeaders {
+  _id: string;
+  index: string;
+  firstName: string;
+  lastName: string;
+  company: string;
+  email: string;
+  phone: string;
+  address: string;
+}
