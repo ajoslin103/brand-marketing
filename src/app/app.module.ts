@@ -9,6 +9,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ContactsTableComponent } from './contacts-table/contacts-table.component';
 import { ContactService } from './services/contact.service';
+import { ContactDataSource } from './datasources/contact-datasource';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -41,7 +42,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatCardModule,
     ReactiveFormsModule,
   ],
-  providers: [ContactService, MatSnackBar],
+  providers: [ContactService, MatSnackBar, ContactDataSource],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
