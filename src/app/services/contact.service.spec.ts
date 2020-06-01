@@ -1,33 +1,29 @@
-import { TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
+import { Injector } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 
 import { ContactService } from './contact.service';
 
 describe('ContactService', () => {
-  let service: ContactService;
+  let injector: Injector;
+  let contactService: ContactService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
+    injector = TestBed.configureTestingModule({
+      providers: [ContactService],
       imports: [HttpClientModule],
     });
-    service = TestBed.inject(ContactService);
+
+    contactService = injector.get(ContactService);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  it('should pull data', (done: DoneFn) => {
+    contactService.getContactRecordObservable().subscribe((data) => {
+      expect(data).toBeInstanceOf(Array);
+      expect(data.length).toBeGreaterThan(0);
+      done();
+    });
   });
 
-  it('should have a [was private] field: serviceUrl', () => {
-    expect(service.serviceUrl).toBeFalsy();
-  });
-
-  it('should have a method: getServiceUrl', () => {
-    expect(typeof service.getServiceUrl === 'function').toBeTrue();
-    service.getServiceUrl();
-  });
-
-  it('should have a function: getContactRecordObservable', () => {
-    expect(typeof service.getContactRecordObservable === 'function').toBeTrue();
-    service.getContactRecordObservable();
-  });
+  // TODO: if I have time I'll mock the http and test failed data url
 });
