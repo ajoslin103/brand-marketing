@@ -8,15 +8,44 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { By } from '@angular/platform-browser';
+import { Injector } from '@angular/core';
+
+import {
+  UIString,
+  UIStrings,
+  CONTACTS_FORM_TITLE,
+  CONTACTS_FORM_PASS_MSG,
+  CONTACTS_FORM_FAIL_MSG,
+  CONTACTS_FIRST_NAME_NAME,
+  CONTACTS_LAST_NAME_NAME,
+  CONTACTS_COMPANY_NAME,
+  CONTACTS_EMAIL_NAME,
+  CONTACTS_PHONE_NAME,
+  CONTACTS_ADDRESS_NAME,
+} from '../utils/ui-strings';
 
 import { AddContactFormComponent } from './add-contact-form.component';
 
 describe('AddContactFormComponent', () => {
   let component: AddContactFormComponent;
   let fixture: ComponentFixture<AddContactFormComponent>;
+  let enStrings: UIStrings;
+  let injector: Injector;
   let compiled: Element;
 
+  let formTitle: UIString;
+  let contactsFirstNameColumnName: UIString;
+  let contactsLastNameColumnName: UIString;
+  let contactsCompanyColumnName: UIString;
+  let contactsEmailColumnName: UIString;
+  let contactsPhoneColumnName: UIString;
+  let contactsAddressColumnName: UIString;
+
   beforeEach(async(() => {
+    injector = TestBed.configureTestingModule({
+      providers: [UIStrings],
+    });
+
     TestBed.configureTestingModule({
       declarations: [AddContactFormComponent],
       imports: [
@@ -30,7 +59,20 @@ describe('AddContactFormComponent', () => {
         MatSelectModule,
       ],
     }).compileComponents();
+
+    enStrings = injector.get(UIStrings);
+    formTitle = enStrings.Get(CONTACTS_FORM_TITLE);
+
+    // TODO: check placeholders if I hae time
+    contactsFirstNameColumnName = enStrings.Get(CONTACTS_FIRST_NAME_NAME);
+    contactsLastNameColumnName = enStrings.Get(CONTACTS_LAST_NAME_NAME);
+    contactsCompanyColumnName = enStrings.Get(CONTACTS_COMPANY_NAME);
+    contactsEmailColumnName = enStrings.Get(CONTACTS_EMAIL_NAME);
+    contactsPhoneColumnName = enStrings.Get(CONTACTS_PHONE_NAME);
+    contactsAddressColumnName = enStrings.Get(CONTACTS_ADDRESS_NAME);
   }));
+
+  // review: there are arguments against complex tesing
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AddContactFormComponent);
@@ -43,10 +85,10 @@ describe('AddContactFormComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should be titled: Add New Contact', () => {
-    expect(
-      compiled.querySelector('.mat-card-header-text').textContent
-    ).toContain('Add New Contact');
+  it(`should be titled: ${formTitle}`, () => {
+    expect(compiled.querySelector('.mat-card-header-text').textContent).toEqual(
+      formTitle
+    );
   });
 
   it('should have a control for firstName', () => {

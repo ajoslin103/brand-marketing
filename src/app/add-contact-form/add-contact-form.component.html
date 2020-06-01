@@ -1,23 +1,23 @@
 <form [formGroup]="addContactForm" novalidate (ngSubmit)="onSubmit()">
   <mat-card class="shipping-card">
     <mat-card-header>
-      <mat-card-title>Add New Contact</mat-card-title>
+      <mat-card-title>{{formTitle}}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="First name" formControlName="firstName">
+            <input matInput placeholder={{colHeaders.firstName}} formControlName="firstName">
             <mat-error *ngIf="addContactForm.controls['firstName'].hasError('required')">
-              First name is <strong>required</strong>
+              {{colHeaders.firstName}} is <strong>required</strong>
             </mat-error>
           </mat-form-field>
         </div>
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Last name" formControlName="lastName">
+            <input matInput placeholder={{colHeaders.lastName}} formControlName="lastName">
             <mat-error *ngIf="addContactForm.controls['lastName'].hasError('required')">
-              Last name is <strong>required</strong>
+              {{colHeaders.lastName}} is <strong>required</strong>
             </mat-error>
           </mat-form-field>
         </div>
@@ -25,9 +25,9 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Company" formControlName="company">
+            <input matInput placeholder={{colHeaders.company}} formControlName="company">
             <mat-error *ngIf="addContactForm.controls['company'].hasError('required')">
-              Company is <strong>required</strong>
+              {{colHeaders.company}} is <strong>required</strong>
             </mat-error>
           </mat-form-field>
         </div>
@@ -35,20 +35,20 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Email" formControlName="email" email>
+            <input matInput placeholder={{colHeaders.email}} formControlName="email" email>
             <mat-error *ngIf="addContactForm.controls['email'].hasError('required')">
-              Email is <strong>required</strong>
+              {{colHeaders.email}} is <strong>required</strong>
             </mat-error>
             <mat-error *ngIf="addContactForm.controls['email'].hasError('email')">
-              Email is <strong>invalid</strong>
+              Email is <strong>incorrectly formatted</strong>
             </mat-error>
           </mat-form-field>
         </div>
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Phone" formControlName="phone">
+            <input matInput placeholder={{colHeaders.phone}} formControlName="phone">
             <mat-error *ngIf="addContactForm.controls['phone'].hasError('required')">
-              Phone is <strong>required</strong>
+              {{colHeaders.phone}} is <strong>required</strong>
             </mat-error>
           </mat-form-field>
         </div>
@@ -56,9 +56,9 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <textarea matInput placeholder="Address" formControlName="address"></textarea>
+            <textarea matInput placeholder={{colHeaders.address}} formControlName="address"></textarea>
             <mat-error *ngIf="addContactForm.controls['address'].hasError('required')">
-              Address is <strong>required</strong>
+              {{colHeaders.address}} is <strong>required</strong>
             </mat-error>
           </mat-form-field>
         </div>

@@ -20,6 +20,10 @@
   - provide a source of contactRecords, it wouldn't stop pulling them
   - providing a dataSouce with a service, it tries to connect too soon
 
+- discussion: technical debt
+
+  - `app.component.spec.ts
+
 # The Assignment
 
 ## Brand Marketing Code Test
