@@ -1,8 +1,12 @@
-# Deployment
+# Brand Marketing Code Test
 
-I normally deliver software via signed .rpms - in this case I will deliver to /var/www/html
+A few notes:
 
-# Reviewable
+- I don't generally push the feature branches to the repo - but wanted to show more of my work
+
+- I brought the test data local using: `json-server` for development after I got locked out of the mockable.io site
+
+## Reviewable
 
 `src/app/datasources/contact-datasource.ts`
 
@@ -28,9 +32,15 @@ I normally deliver software via signed .rpms - in this case I will deliver to /v
 
   - `app.component.spec.ts
 
-# The Assignment
+- discussion: strings
 
-## Brand Marketing Code Test
+  - `ui-strings.sh`
+
+## Deployment
+
+I normally deliver software via signed .rpms - in this case I will deliver to /var/www/html
+
+# The Assignment
 
 ### Purpose
 
