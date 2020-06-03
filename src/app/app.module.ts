@@ -22,6 +22,7 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { UIStrings } from './utils/ui-strings';
 import { ContactService } from './services/contact.service';
+import { ContactAddedService } from './services/contact-added.service';
 import { ContactDataSource } from './datasources/contact-datasource';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -46,7 +47,7 @@ import { AppRoutingModule } from './app-routing.module';
     MatCardModule,
     ReactiveFormsModule,
   ],
-  providers: [ContactService, MatSnackBar, ContactDataSource, UIStrings],
+  providers: [ContactService, MatSnackBar, ContactDataSource, UIStrings, ContactAddedService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
