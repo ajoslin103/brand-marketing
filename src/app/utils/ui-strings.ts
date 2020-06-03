@@ -108,9 +108,9 @@ export class UIStrings {
       }
 
       // tslint:disable-next-line: no-console
-      console.debug(
-        `Strings.Get(desiredLang: ${this.workingLanguage}, requestedPath: ${requestedPath}) => ${stringByPath.text}`
-      );
+      // console.debug(
+      //   `Strings.Get(desiredLang: ${this.workingLanguage}, requestedPath: ${requestedPath}) => ${stringByPath.text}`
+      // );
 
       return stringByPath.text;
     } catch (err) {
@@ -140,10 +140,10 @@ export class UIStrings {
 
       { path: CONTACTS_FORM_TITLE, text: 'Add New Contact' },
       {
-        path: CONTACTS_FORM_PASS_MSG,
+        path: CONTACTS_FORM_FAIL_MSG,
         text: 'Please correct your form entries',
       },
-      { path: CONTACTS_FORM_FAIL_MSG, text: 'Contact Submitted' },
+      { path: CONTACTS_FORM_PASS_MSG, text: 'Contact Submitted' },
     ],
   };
 }

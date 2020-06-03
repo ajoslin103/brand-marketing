@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ContactHeaders } from '../models/contact';
+import { Subject } from 'rxjs';
 
 import {
   UIString,
@@ -19,12 +20,16 @@ import {
   CONTACTS_ADDRESS_NAME,
 } from '../utils/ui-strings';
 
+import { ContactAddedService } from '../services/contact-added.service';
+
 @Component({
   selector: 'app-add-contact-form',
   templateUrl: './add-contact-form.component.html',
   styleUrls: ['./add-contact-form.component.scss'],
 })
 export class AddContactFormComponent {
+  addedContact: Subject<object>;
+
   addContactForm = this.fb.group({
     firstName: [null, Validators.required],
     lastName: [null, Validators.required],
@@ -42,7 +47,8 @@ export class AddContactFormComponent {
   constructor(
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
-    private uiStrings: UIStrings
+    private uiStrings: UIStrings,
+    private contactAddedService: ContactAddedService
   ) {
     this.formTitle = this.uiStrings.Get(CONTACTS_FORM_TITLE);
     this.formPassSnack = this.uiStrings.Get(CONTACTS_FORM_PASS_MSG);
@@ -64,9 +70,7 @@ export class AddContactFormComponent {
       this.snackBar.open(this.formFailSnack);
     } else {
       this.snackBar.open(this.formPassSnack);
-      console.log(
-        `Contact Submitted: ${JSON.stringify(this.addContactForm.value)}`
-      );
+      this.contactAddedService.emitNewContact(this.addContactForm.value);
     }
   }
 }
