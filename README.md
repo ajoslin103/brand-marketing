@@ -2,7 +2,7 @@
 
 A few notes:
 
-- I don't generally push the feature branches to the repo - but wanted to show more of my work
+- I don't generally push the feature branches to the repo - but decided in this case to show more of my process
 
 - I brought the test data local using: `json-server` for development after I got locked out of the mockable.io site
 
@@ -10,35 +10,53 @@ A few notes:
 
 `src/app/datasources/contact-datasource.ts`
 
-- switch to my dynamic sorting to help reduce the future change ripples
+- rewrite table sorting to help reduce the future change ripples
 
-`src/app/services/contact-service.spec.ts`
-
-- discussion: the sample data indicates to me that the postal-code might be managed as a number rather than a string... additional work may be needed elsewhere should we need to support international contacts...
 - discussion: it would be nice to combine dataSource && displayedColumns in some way... creating an iterable to simplify the declarative table definition style, but one can't walk a type at runtime...
-- discussion: testing issues
 
-  - ContactService, TLDR: If I have time I'll revisit...
-  - ContactDataSource, TLDR: If I have time I'll revisit...
-  - ContactsTableComponent, TLDR: If I have time I'll revisit...
-
-- discussion: code coverage lacking
+- discussion: issues with the MatTable
 
   - provide an array, and I don't get the sorting and pagination
   - provide a source of contactRecords, it wouldn't stop pulling them
   - providing a dataSouce with a service, it tries to connect too soon
 
+`src/app/services/contact-service.spec.ts`
+
+- discussion: the sample data indicates to me that the postal-code might be managed as a number rather than a string... additional work may be needed elsewhere should we need to support international contacts...
+
+- discussion: general issues, search on TODO
+
+  - ContactService, TLDR: If I have time I'll revisit...
+  - ContactDataSource, TLDR: If I have time I'll revisit...
+  - ContactsTableComponent, TLDR: If I have time I'll revisit...
+
+- discussion: code coverage
+
+  - unable to get complete coverage on the datasource, 
+
 - discussion: technical debt
 
-  - `app.component.spec.ts
+  - `app.component.spec.ts`
 
 - discussion: strings
 
   - `ui-strings.sh`
 
+---
+
+## Serving locally with Docker
+
+To serve locally with Docker: ./serve_dist_with_docker.sh
+
+Then browse http://localhost:8080
+
 ## Deployment
 
-I normally deliver software via signed .rpms - in this case I will deliver to /var/www/html
+I prefer to deliver software via signed .rpms, for this exercise the .rpm delivers to /var/www/html 
+
+building the .rpm : ./pwa_BuildPackage.sh 
+
+---
 
 # The Assignment
 
@@ -79,11 +97,10 @@ Once you're happy with your work here, send the link to your repo to your recrui
 - Code Quality: Does the code show a strong understanding of the technology?
 - Creativity: Does the submission show novel solutions unique design decisions?
 
-### Questions
 
-Should you have any questions, issues, or comments regarding this test, please contact your recruiter and they'll be more than happy to help!
+---
 
-# BrandMarketing
+## Angular CLI Boilerplate
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
 

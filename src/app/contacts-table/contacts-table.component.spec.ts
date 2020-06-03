@@ -43,7 +43,7 @@ describe('ContactsTableComponent', () => {
   let contactsAddressColumnName: UIString;
 
   beforeEach(
-    asy(() => {
+    async(() => {
       injector = TestBed.configureTestingModule({
         providers: [ContactService, UIStrings],
         imports: [HttpClientModule],
