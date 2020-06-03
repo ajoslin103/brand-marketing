@@ -1,4 +1,5 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/ajoslin103/brand-marketing/badge.svg?targetFile=package.json)](https://snyk.io/test/github/ajoslin103/brand-marketing?targetFile=package.json)
+[![Build Status](https://travis-ci.org/ajoslin103/brand-marketing.png?branch=develop)](https://travis-ci.org/ajoslin103/brand-marketing)
 
 # Brand Marketing Code Test
 
