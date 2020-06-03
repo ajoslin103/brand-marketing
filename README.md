@@ -1,3 +1,5 @@
+[![Known Vulnerabilities](https://snyk.io/test/github/ajoslin103/brand-marketing/badge.svg?targetFile=package.json)](https://snyk.io/test/github/ajoslin103/brand-marketing?targetFile=package.json)
+
 # Brand Marketing Code Test
 
 A few notes:
