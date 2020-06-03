@@ -140,10 +140,10 @@ export class UIStrings {
 
       { path: CONTACTS_FORM_TITLE, text: 'Add New Contact' },
       {
-        path: CONTACTS_FORM_PASS_MSG,
+        path: CONTACTS_FORM_FAIL_MSG,
         text: 'Please correct your form entries',
       },
-      { path: CONTACTS_FORM_FAIL_MSG, text: 'Contact Submitted' },
+      { path: CONTACTS_FORM_PASS_MSG, text: 'Contact Submitted' },
     ],
   };
 }
