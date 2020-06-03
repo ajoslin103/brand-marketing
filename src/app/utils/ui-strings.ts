@@ -108,9 +108,9 @@ export class UIStrings {
       }
 
       // tslint:disable-next-line: no-console
-      console.debug(
-        `Strings.Get(desiredLang: ${this.workingLanguage}, requestedPath: ${requestedPath}) => ${stringByPath.text}`
-      );
+      // console.debug(
+      //   `Strings.Get(desiredLang: ${this.workingLanguage}, requestedPath: ${requestedPath}) => ${stringByPath.text}`
+      // );
 
       return stringByPath.text;
     } catch (err) {
