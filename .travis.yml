@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+- 'node'
+branches:
+  only:
+  - master
+  - develop
+sudo: required
+before_script:
+  - npm install -g @angular/cli
+script:
+  - ng lint
+  - ng  test --watch=false --browsers=ChromeHeadless --code-coverage
+  - npm run coveralls
+  - ng build --prod --base-href https://ajoslin103.github.io/

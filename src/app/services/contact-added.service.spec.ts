@@ -26,6 +26,6 @@ describe('ContactAddedService', () => {
       }
     );
 
-    serviceToTest.emitNewContact({ test: 'data' })
+    serviceToTest.emitNewContact({ test: 'data' });
   });
 });
