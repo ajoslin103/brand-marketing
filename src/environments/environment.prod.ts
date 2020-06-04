@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  contactListUrl: 'http://demo5838836.mockable.io/contact',
+  contactListUrl: 'https://evening-sierra-94782.herokuapp.com/http://demo5838836.mockable.io/contact',
 };
