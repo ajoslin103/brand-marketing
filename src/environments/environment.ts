@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  contactListUrl: 'http://demo5838836.mockable.io/contact',
-  fallbackListUrl: 'http://localhost:3000/contacts',
+  // contactListUrl: 'http://demo5838836.mockable.io/contact',
+  contactListUrl: 'http://localhost:3000/contacts',
 };
 
 /*
